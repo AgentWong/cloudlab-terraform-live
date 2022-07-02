@@ -8,17 +8,16 @@ dependency "setup" {
 }
 inputs = {
   # Shared
-  ingress_ports = [22, 80]
-  vpc_id        = dependency.setup.outputs.vpc_id
+  vpc_id = dependency.setup.outputs.vpc_id
 
   # EC2
   ami_owner      = "amazon"
   ami_name       = "amzn-ami-hvm*"
   instance_count = "2"
   instance_name  = local.app_name
-
-  key_name  = dependency.setup.outputs.key_name
-  user_data = <<EOF
+  ingress_ports  = [22, 80]
+  key_name       = dependency.setup.outputs.key_name
+  user_data      = <<EOF
     #!/bin/bash
     yum -y install httpd git
     service httpd start
@@ -30,8 +29,7 @@ inputs = {
   EOF
 
   # ALB
-  alb_name   = local.app_name
-  subnet1_id = dependency.setup.outputs.public_subnets[0]
-  subnet2_id = dependency.setup.outputs.public_subnets[1]
-
+  alb_name          = local.app_name
+  subnet_ids        = dependency.setup.outputs.public_subnets
+  alb_ingress_ports = [80]
 }

@@ -10,13 +10,13 @@ inputs = {
   # Shared
   subnet_ids = dependency.setup.outputs.public_subnets
   vpc_id     = dependency.setup.outputs.vpc_id
-  ingress_ports      = [22, 80]
 
   # ASG
   ami_owner         = "amazon"
   ami_name          = "amzn-ami-hvm*"
   min_size          = "1"
   max_size          = "3"
+  ingress_ports      = [22, 80]
   cluster_name      = local.app_name
   health_check_type = "ELB"
   key_name          = dependency.setup.outputs.key_name
@@ -33,4 +33,5 @@ inputs = {
 
   # ALB
   alb_name   = local.app_name
+  alb_ingress_ports      = [80]
 }
