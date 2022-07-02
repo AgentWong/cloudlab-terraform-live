@@ -33,5 +33,4 @@ inputs = {
 
   # ALB
   alb_name   = local.app_name
-  
 }

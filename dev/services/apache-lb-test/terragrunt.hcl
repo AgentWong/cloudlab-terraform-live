@@ -1,16 +1,16 @@
 terraform {
-  source = "../../../../modules//composite/services/apache-lb-test"
+  source = "${include.root.locals.base_source_url}//composite/services/apache-lb-test?ref=${include.env.locals.release}"
 }
 include "root" {
-  path = find_in_parent_folders()
+  path   = find_in_parent_folders()
+  expose = true
 }
-include "region" {
-  path = find_in_parent_folders("env.hcl")
+include "env" {
+  path   = find_in_parent_folders("env.hcl")
   expose = true
 }
 include "apache-lb-test" {
-  path = "${dirname(find_in_parent_folders())}/_env/apache-lb-test.hcl"
-  expose = true
+  path = "${dirname(find_in_parent_folders())}/_envcommon/apache-lb-test.hcl"
 }
 inputs = {
   instance_type = "t3.micro"

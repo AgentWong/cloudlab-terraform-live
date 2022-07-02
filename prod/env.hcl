@@ -10,4 +10,5 @@ generate "provider" {
 locals {
   region = "us-west-2"
   env    = "prod"
+  release = "v0.1.0"
 }
