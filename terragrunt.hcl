@@ -12,7 +12,7 @@ remote_state {
 
 generate "backend" {
   path      = "backend.tf"
-  if_exists = "overwrite"
+  if_exists = "overwrite_terragrunt"
   contents  = <<EOF
   terraform {
         backend "s3" {}
@@ -20,10 +20,29 @@ generate "backend" {
   EOF
 }
 
+generate "versions" {
+  path = "versions.tf"
+
+  if_exists = "overwrite_terragrunt"
+
+  contents = <<EOF
+  terraform { 
+    required_version = "~> 1.2.0"
+  
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+        version = "~> 4.21"
+      }
+    }
+  }
+  EOF
+}
+
 locals {
-  env_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
-  env = local.env_vars.locals.env
-  region = local.env_vars.locals.region
-  org_name = "valhalla"
+  env_vars        = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  env             = local.env_vars.locals.env
+  region          = local.env_vars.locals.region
+  org_name        = "valhalla"
   base_source_url = "github.com/AgentWong/cloudlab-terraform-modules"
 }
