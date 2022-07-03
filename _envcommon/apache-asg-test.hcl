@@ -4,7 +4,7 @@ locals {
   app_name = "${local.env}-apache-asg"
 }
 dependency "setup" {
-  config_path = "${get_terragrunt_dir()}/../../setup"
+  config_path = "${dirname(find_in_parent_folders("env.hcl"))}/setup"
   mock_outputs = {
     vpc_id = "temporary-dummy-id"
     key_name = "temporary_dummy_key"
