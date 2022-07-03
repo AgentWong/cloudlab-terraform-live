@@ -46,3 +46,20 @@ locals {
   org_name        = "valhalla"
   base_source_url = "github.com/AgentWong/cloudlab-terraform-modules"
 }
+
+# Prevents excessive .terragrunt-cache size by caching Terraform plugins.
+terraform {
+    extra_arguments "plugin_dir" {
+        commands = [
+            "init",
+            "plan",
+            "apply",
+            "destroy",
+            "output"
+        ]
+
+        env_vars = {
+            TF_PLUGIN_CACHE_DIR = "/tmp/plugins",
+        }
+    }
+}
