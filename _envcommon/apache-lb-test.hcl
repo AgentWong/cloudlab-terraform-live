@@ -5,6 +5,12 @@ locals {
 }
 dependency "setup" {
   config_path = "${get_terragrunt_dir()}/../../setup"
+  mock_outputs = {
+    vpc_id = "temporary-dummy-id"
+    key_name = "temporary_dummy_key"
+    public_subnets = ["temporary-dummy-id"]
+  }
+  mock_outputs_allowed_terraform_commands = ["validate","init"]
 }
 inputs = {
   # Shared
