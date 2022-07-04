@@ -17,12 +17,16 @@ dependency "setup" {
 inputs = {
   # Shared
   vpc_id = dependency.setup.outputs.vpc_id
+  service_name = local.app_name
+  subnet_ids        = dependency.setup.outputs.public_subnets
+
+   # ALB
+  alb_ingress_ports = [80]
 
   # EC2
   ami_owner      = "amazon"
   ami_name       = "amzn-ami-hvm*"
   instance_count = "2"
-  instance_name  = local.app_name
   ingress_ports  = [22, 80]
   key_name       = dependency.setup.outputs.key_name
   user_data      = <<EOF
@@ -36,8 +40,4 @@ inputs = {
     cp -avr work /var/www/html/
   EOF
 
-  # ALB
-  alb_name          = local.app_name
-  subnet_ids        = dependency.setup.outputs.public_subnets
-  alb_ingress_ports = [80]
 }

@@ -13,5 +13,6 @@ include "apache-lb-test" {
   path = "${dirname(find_in_parent_folders())}/_envcommon/apache-lb-test.hcl"
 }
 inputs = {
+  # ASG
   instance_type = "t2.micro"
 }
