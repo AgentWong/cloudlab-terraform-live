@@ -1,10 +1,12 @@
 locals {
+  # Automatically load environment-level variables
   env_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
   env = local.env_vars.locals.env
+
   app_name = "${local.env}-apache-asg"
 }
 dependency "setup" {
-  config_path = "${dirname(find_in_parent_folders("env.hcl"))}/setup"
+  config_path = "${dirname(find_in_parent_folders("region.hcl"))}/setup"
   mock_outputs = {
     vpc_id = "temporary-dummy-id"
     key_name = "temporary_dummy_key"
