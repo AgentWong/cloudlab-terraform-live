@@ -13,5 +13,5 @@ include "apache-lb-test" {
   path = "${dirname(find_in_parent_folders())}/_envcommon/apache-lb-test.hcl"
 }
 inputs = {
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
 }

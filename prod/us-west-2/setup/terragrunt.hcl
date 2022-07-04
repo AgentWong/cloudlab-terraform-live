@@ -2,11 +2,11 @@ terraform {
   source = "${include.root.locals.base_source_url}//composite/setup?ref=${include.env.locals.release}"
 }
 include "root" {
-  path = find_in_parent_folders()
+  path   = find_in_parent_folders()
   expose = true
 }
 include "env" {
-  path = find_in_parent_folders("env.hcl")
+  path   = find_in_parent_folders("env.hcl")
   expose = true
 }
 include "setup" {
