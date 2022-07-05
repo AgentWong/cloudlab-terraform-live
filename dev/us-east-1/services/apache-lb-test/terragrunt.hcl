@@ -13,6 +13,7 @@ include "apache-lb-test" {
   path = "${dirname(find_in_parent_folders())}/_envcommon/apache-lb-test.hcl"
 }
 inputs = {
-  # ASG
-  instance_type = "t2.micro"
+  # EC2
+  instance_type   = "t2.micro"
+  linux_mgmt_cidr = ["${run_cmd("--terragrunt-quiet", "curl", "-s", "https://checkip.amazonaws.com/")}/32"]
 }
