@@ -1,7 +1,7 @@
 locals {
   # Automatically load environment-level variables
-  env_vars     = read_terragrunt_config(find_in_parent_folders("env.hcl"))
-  env          = local.env_vars.locals.env
+  env_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  env      = local.env_vars.locals.env
 
   app_name = "${local.env}-lamp-test"
 }
@@ -25,7 +25,7 @@ inputs = {
 
   # ASG
   ami_owner         = "amazon"
-  ami_name          = "al2022-ami-2022*5.15*x86_64"
+  ami_name          = "amzn2-ami-hvm*x86_64*gp2" # Amazon Linux 2
   min_size          = "1"
   max_size          = "3"
   ingress_ports     = [22, 80]
@@ -33,5 +33,5 @@ inputs = {
   key_name          = dependency.setup.outputs.key_name
 
   # RDS
-  private_subnet_ids        = dependency.setup.outputs.private_subnets
+  private_subnet_ids = dependency.setup.outputs.private_subnets
 }

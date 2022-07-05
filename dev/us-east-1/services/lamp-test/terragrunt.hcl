@@ -14,8 +14,8 @@ include "apache-lb-test" {
 }
 inputs = {
   # ASG
-  instance_type = "t2.micro"
-  linux_mgmt_cidr   = ["${run_cmd("--terragrunt-quiet", "curl", "-s", "https://checkip.amazonaws.com/")}/32"]
+  instance_type   = "t2.micro"
+  linux_mgmt_cidr = ["${run_cmd("--terragrunt-quiet", "curl", "-s", "https://checkip.amazonaws.com/")}/32"]
 
   # SM
   path = include.root.locals.relative_path

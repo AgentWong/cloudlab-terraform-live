@@ -25,7 +25,7 @@ inputs = {
 
   # ASG
   ami_owner         = "amazon"
-  ami_name          = "amzn-ami-hvm*"
+  ami_name          = "amzn-ami-hvm*" # Amazon Linux 1
   min_size          = "1"
   max_size          = "3"
   ingress_ports     = [22, 80]
