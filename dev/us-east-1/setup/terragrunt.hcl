@@ -18,4 +18,7 @@ inputs = {
   tgw_cidr        = "172.0.0.0/8"
   public_subnets  = ["172.16.1.0/24", "172.16.2.0/24", "172.16.3.0/24"]
   private_subnets = ["172.16.4.0/24", "172.16.5.0/24", "172.16.6.0/24"]
+
+  # Ansible Bastion
+  linux_mgmt_cidr = ["${run_cmd("--terragrunt-quiet", "curl", "-s", "https://checkip.amazonaws.com/")}/32"]
 }
