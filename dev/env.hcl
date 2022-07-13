@@ -1,4 +1,4 @@
 locals {
   env    = "dev"
-  release = "v0.4.5"
+  release = "v0.4.7"
 }
