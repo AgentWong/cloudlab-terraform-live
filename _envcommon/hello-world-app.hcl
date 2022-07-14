@@ -16,7 +16,7 @@ dependency "setup" {
 }
 inputs = {
   # Shared
-  subnet_ids   = dependency.setup.outputs.public_subnets
+  subnet_ids   = dependency.setup.outputs.public_subnet_ids
   vpc_id       = dependency.setup.outputs.vpc_id
   service_name = local.app_name
 
@@ -33,5 +33,5 @@ inputs = {
   key_name          = dependency.setup.outputs.key_name
 
   # RDS
-  private_subnet_ids        = dependency.setup.outputs.private_subnets
+  private_subnet_ids        = dependency.setup.outputs.private_subnet_ids
 }

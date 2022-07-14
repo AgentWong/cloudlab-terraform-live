@@ -18,7 +18,7 @@ dependency "setup" {
 inputs = {
   # Shared
   service_name = local.app_name
-  subnet_ids = dependency.setup.outputs.public_subnets
+  subnet_ids = dependency.setup.outputs.public_subnet_ids
   vpc_id     = dependency.setup.outputs.vpc_id
 
   # ALB

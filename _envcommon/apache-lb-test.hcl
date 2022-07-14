@@ -8,19 +8,19 @@ locals {
 dependency "setup" {
   config_path = "${dirname(find_in_parent_folders("region.hcl"))}/setup"
   mock_outputs = {
-    vpc_id = "temporary-dummy-id"
-    key_name = "temporary_dummy_key"
+    vpc_id         = "temporary-dummy-id"
+    key_name       = "temporary_dummy_key"
     public_subnets = ["temporary-dummy-id"]
   }
-  mock_outputs_allowed_terraform_commands = ["validate","init"]
+  mock_outputs_allowed_terraform_commands = ["validate", "init"]
 }
 inputs = {
   # Shared
-  vpc_id = dependency.setup.outputs.vpc_id
+  vpc_id       = dependency.setup.outputs.vpc_id
   service_name = local.app_name
-  subnet_ids        = dependency.setup.outputs.public_subnets
+  subnet_ids   = dependency.setup.outputs.public_subnet_ids
 
-   # ALB
+  # ALB
   alb_ingress_ports = [80]
 
   # EC2

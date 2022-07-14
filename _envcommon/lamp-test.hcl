@@ -33,5 +33,5 @@ inputs = {
   key_name          = dependency.setup.outputs.key_name
 
   # RDS
-  private_subnet_ids = dependency.setup.outputs.private_subnets
+  private_subnet_ids = dependency.setup.outputs.private_subnet_ids
 }
