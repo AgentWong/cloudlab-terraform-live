@@ -14,6 +14,7 @@ inputs = {
   public_key = file("~/.ssh/id_rsa.pub")
 
   # VPC
-  prefix_name     = local.env
-  region          = local.region
+  domain_name = "valhalla.local"
+  prefix_name = local.env
+  region      = local.region
 }

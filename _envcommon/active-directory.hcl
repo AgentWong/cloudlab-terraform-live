@@ -27,11 +27,13 @@ inputs = {
   netbios                    = "VALHALLA"
 
   # EC2
-  ansible_winrm_sg_id = dependency.setup.outputs.winrm_mgmt_sg_id
-  environment         = local.env
-  key_name            = dependency.setup.outputs.key_name
-  pdc_subnet_id       = dependency.setup.outputs.private_subnet_ids[0]
-  region              = local.region
-  vpc_id              = dependency.setup.outputs.vpc_id
-  pdc_subnet_cidr     = dependency.setup.outputs.private_subnet_cidr_blocks[0]
+  ansible_winrm_sg_id  = dependency.setup.outputs.winrm_mgmt_sg_id
+  environment          = local.env
+  key_name             = dependency.setup.outputs.key_name
+  private_subnet_cidrs = dependency.setup.outputs.private_subnet_cidr_blocks
+  private_subnet_ids   = dependency.setup.outputs.private_subnet_ids
+  public_subnet_cidrs  = dependency.setup.outputs.public_subnet_cidr_blocks
+  region               = local.region
+  vpc_id               = dependency.setup.outputs.vpc_id
+
 }
