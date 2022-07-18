@@ -1,8 +1,8 @@
 # Cloudlab Terraform Live
-This space is for Terragrunt to run Terraform modules hosted in a separate repository.
+This space is for Terragrunt to run Terraform modules hosted in a separate repository.  
 https://github.com/AgentWong/cloudlab-terraform-modules
 
-The overall structure closely reflects the Gruntworks Terragrunt live infrastructure in design:
+The overall structure closely reflects the Gruntworks Terragrunt live infrastructure in design:  
 https://github.com/gruntwork-io/terragrunt-infrastructure-live-example
 
 ## Structure
