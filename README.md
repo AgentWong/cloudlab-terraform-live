@@ -100,7 +100,7 @@ inputs = {
 }
 ```
 
-
+  
 Example of prod/us-west-2/setup/terragrunt.hcl:  
 ```
 terraform {
