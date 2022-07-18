@@ -18,7 +18,7 @@ locals {
 remote_state {
   backend = "s3"
   config = {
-    bucket = "${local.org_name}-${local.env}-4ec2"
+    bucket = "${local.org_name}-${local.env}-4ec3"
     key    = "${path_relative_to_include()}/terraform.tfstate"
     region = "us-east-1"
 
