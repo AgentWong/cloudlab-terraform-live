@@ -41,11 +41,6 @@ jobs:
         id: ls
         run: ls -lah
 
-      - name: terragrunt validate
-        id: validate
-        run: terragrunt run-all validate
-        working-directory: /terragrunt/prod
-
       - name: terragrunt Apply
         id: apply
         run: terragrunt run-all apply -auto-approve
