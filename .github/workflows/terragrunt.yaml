@@ -43,5 +43,5 @@ jobs:
 
       - name: terragrunt Apply
         id: apply
-        run: terragrunt run-all apply -auto-approve
+        run: terragrunt run-all apply
         working-directory: /terragrunt/prod
