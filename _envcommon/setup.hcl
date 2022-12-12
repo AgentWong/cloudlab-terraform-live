@@ -11,7 +11,8 @@ locals {
 inputs = {
   # KMS
   key_name   = "key_to_the_city"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = get_env("PUBLIC_KEY")
+  ec2_private_keymat = get_env("PRIVATE_KEY")
 
   # VPC
   domain_name = "valhalla.local"

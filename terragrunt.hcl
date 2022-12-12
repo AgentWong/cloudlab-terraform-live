@@ -18,7 +18,7 @@ locals {
 remote_state {
   backend = "s3"
   config = {
-    bucket = "${local.org_name}-${local.env}-4ec3"
+    bucket = "${local.org_name}-${local.env}-4ec1"
     key    = "${path_relative_to_include()}/terraform.tfstate"
     region = "us-east-1"
 
@@ -45,7 +45,7 @@ generate "versions" {
 
   contents = <<EOF
   terraform { 
-    required_version = "~> 1.2.0"
+    required_version = "~> 1.3.0"
   
     required_providers {
       aws = {

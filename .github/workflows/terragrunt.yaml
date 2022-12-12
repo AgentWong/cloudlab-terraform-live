@@ -1,0 +1,47 @@
+name: "terragrunt Infrastructure Change Management Pipeline with GitHub Actions"
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  terragrunt:
+    name: "terragrunt Infrastructure Change Management"
+    runs-on: self-hosted
+    container:
+      image: alpine/terragrunt:1.3.6
+      env:
+        NODE_ENV: development
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
+        PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      volumes:
+        - ${{ github.workspace }}:/terragrunt
+      options: --cpus 2
+    defaults:
+      run:
+        # We keep terragrunt files in the terragrunt directory.
+        working-directory: /terragrunt
+
+    steps:
+      - name: Checkout the repository to the runner
+        uses: actions/checkout@v3
+
+      - name: Check dir /
+        id: ls_root
+        run: ls -lah /
+
+      - name: Check dir
+        id: ls
+        run: ls -lah
+
+      - name: terragrunt Apply
+        id: apply
+        run: terragrunt run-all apply --terragrunt-non-interactive
+        working-directory: /terragrunt/prod
