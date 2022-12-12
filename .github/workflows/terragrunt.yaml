@@ -43,5 +43,5 @@ jobs:
 
       - name: terragrunt Apply
         id: apply
-        run: terragrunt run-all apply
+        run: terragrunt run-all apply --terragrunt-non-interactive
         working-directory: /terragrunt/prod
