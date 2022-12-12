@@ -20,5 +20,5 @@ inputs = {
   private_subnets = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
 
     # Linux Bastion
-  linux_mgmt_cidr = ["${get_env('PUBLIC_IP')}"]
+  linux_mgmt_cidr = ["${get_env("PUBLIC_IP")}"]
 }
